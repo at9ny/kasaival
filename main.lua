@@ -1,4 +1,4 @@
-local assetsManager = require('assetsManager')
+local assetsManager = require('plugins/assetsManager')
 
 local state = {}
 state.assetsPath = 'assets/'
