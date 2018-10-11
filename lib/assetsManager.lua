@@ -2,13 +2,13 @@ local assetsManager = {}
 
 assetsManager['assets'] = {}
 
-function assetsManager:load(arg, state)
-  self.assets = state.stage.assets
-  for i = 1, #self.assets do
-    local obj = self.assets[i]
+function assetsManager.load(state)
+  local objs = state.stage.objs
+  for i = 1, #objs do
+    local obj = objs[i]
     if obj.frames > 1 then
       for f=1, obj.frames  do
-       obj.images[f] = love.graphics.newImage(state.assetsPath .. obj.imageName .. '/' .. f .. '.png')
+        obj.images[f] = love.graphics.newImage(state.assetsPath .. obj.imageName .. '/' .. f .. '.png')
      end
     else  
       obj.image = love.graphics.newImage(state.assetsPath .. obj.ImageName .. '.png')
@@ -17,13 +17,13 @@ function assetsManager:load(arg, state)
 end
 
 local frame = 0
-function assetsManager:update(dt)
+function assetsManager.update()
   frame = frame + 1
 end
 
-function assetsManager:draw()
-  for i = 1, #self.assets do
-    local obj = self.assets[i]
+function assetsManager.draw(objs)
+  for i = 1, #objs do
+    local obj = objs[i]
 
     -- info[1] = name of asset, info[2] = how many frames    
     if obj.frames > 1 then

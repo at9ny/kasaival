@@ -1,6 +1,7 @@
 local Game = {}
 
-Game.assets = {
+Game.dimension = 2.5
+Game.objs = {
   [1] = { 
     name = 'player',
     imageName = 'flame',
@@ -9,9 +10,13 @@ Game.assets = {
     frameSpeed = 0.3,
     x = 400,
     y = 300, 
+    pluginsToInstall = {'move'},
+    pluginsInstalled = {},
+    speed = 2,
   }
 }
-function Game:load(arg)
+
+function Game:load()
 end
 
 function Game:update(dt)
