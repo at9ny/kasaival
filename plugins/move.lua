@@ -1,5 +1,32 @@
 local move = {}
 
+function defaultControls(speed)
+  return {
+    [1] = {
+      scancodes = {'up', 'w'}, 
+      dy = -speed,
+    },
+    [2] = { 
+      scancodes = {'right', 'd'},
+      dx = speed,
+    },
+    [3] = { 
+      scancodes = {'down', 's'},
+      dy = speed,
+    },
+    [4] = { 
+      scancodes = {'left', 'a'},
+      dx = -speed,
+    }
+  }
+end
+
+function nilToZero(val)
+  if val ~= nil then
+    return val
+  else return 0 end
+end
+
 function scancodeDown(options)
   for i, option in ipairs(options) do
     if love.keyboard.isScancodeDown(option) then 
@@ -10,27 +37,23 @@ function scancodeDown(options)
   end
 end
 
+
 function move.update(obj, stage)
-  local x, y = 0, 0
-  local s = obj.speed
-
   local d = stage.dimension
+  local t = obj.transform
+  local dx, dy = 0, 0
+  local sf = 1
+  local objKeyMove = defaultControls(obj.speed)
 
-  if scancodeDown({'up', 'w'}) then
-    y = y - s
-  end
-  if scancodeDown({'right', 'd'}) then
-    x = x + s
-  end
-  if scancodeDown({'down', 's'}) then
-    y = y + s
-  end
-  if scancodeDown({'left', 'a'}) then
-    x = x - s
+  for s = 1,#objKeyMove do
+    if scancodeDown(objKeyMove[s].scancodes) then 
+      dy = dy + nilToZero(objKeyMove[s].dy)
+      dx = dx + nilToZero(objKeyMove[s].dx)
+    end
   end
 
-  obj.x = obj.x + x
-  obj.y = obj.y + y
+  t:scale(1, 1)
+  t:translate(dx, dy)
 end
 
 return move

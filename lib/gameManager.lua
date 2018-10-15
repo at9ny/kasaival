@@ -14,7 +14,7 @@ function gameManager:update(dt, state)
 end
 
 function gameManager:draw(state)
-  assetsManager.draw(state.stage)
+  assetsManager.draw(state.stage.objs)
 end
 
 return gameManager

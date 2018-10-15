@@ -12,8 +12,10 @@ end
 function pluginsManager.update(stage)
   local objs = stage.objs
   for a = 1, #objs do
-    for p = 1, #objs[a].pluginsToInstall do
-      objs[a].pluginsInstalled[p].update(objs[a], stage)
+    local obj = objs[a]
+
+    for p = 1, #obj.pluginsToInstall do
+      obj.pluginsInstalled[p].update(obj, stage)
     end
   end
 end

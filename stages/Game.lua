@@ -1,6 +1,6 @@
 local Game = {}
 
-Game.dimension = 2.5
+Game.dimension = 2.5 
 Game.objs = {
   [1] = { 
     name = 'player',
@@ -8,8 +8,9 @@ Game.objs = {
     images = {},
     frames = 173,
     frameSpeed = 0.3,
-    x = 400,
-    y = 300, 
+    transform = love.math.newTransform( 200, 200, 0, 1, 1, 0, 0, 0, 0),
+    width = 128,
+    height = 256,
     pluginsToInstall = {'move'},
     pluginsInstalled = {},
     speed = 2,
