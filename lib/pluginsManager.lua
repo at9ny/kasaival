@@ -22,7 +22,7 @@ end
 
 function updatePlugins(obj, stage)
     for p = 1, #obj.plugins do
-      if obj.plugin[p].updateMe then
+      if type(obj.plugin[p].update) == 'function' then
         obj.plugin[p].update(obj, stage)
       end
     end
@@ -42,7 +42,7 @@ end
 
 function drawPlugins(obj, stage)
     for p = 1, #obj.plugins do
-      if obj.plugin[p].drawMe then
+      if type(obj.plugin[p].draw) == 'function' then
        obj.plugin[p].draw(obj, stage)
       end
     end

@@ -9,7 +9,7 @@ Game.objs = {
     y = '200',
     width = '800',
     height = "400",
-    plugins = {'grass'},
+    plugins = {'grass', 'trees'},
   },
   [2] = { 
     name = 'Player',
