@@ -1,25 +1,24 @@
 local move = {}
 
-function defaultControls(speed)
-  return {
-    [1] = {
-      scancodes = {'up', 'w'}, 
-      dy = -speed,
-    },
-    [2] = { 
-      scancodes = {'right', 'd'},
-      dx = speed,
-    },
-    [3] = { 
-      scancodes = {'down', 's'},
-      dy = speed,
-    },
-    [4] = { 
-      scancodes = {'left', 'a'},
-      dx = -speed,
-    }
+local defaultControls = {
+  [1] = {
+    scancodes = {'up', 'w'}, 
+    dy = -1,
+  },
+  [2] = { 
+    scancodes = {'right', 'd'},
+    dx = 1,
+  },
+  [3] = { 
+    scancodes = {'down', 's'},
+    dy = 1,
+  },
+  [4] = { 
+    scancodes = {'left', 'a'},
+    dx = -1,
   }
-end
+}
+
 
 function nilToZero(val)
   if val ~= nil then
@@ -43,12 +42,12 @@ function move.update(obj, stage)
   local t = obj.transform
   local dx, dy = 0, 0
   local sf = 1
-  local objKeyMove = defaultControls(obj.speed)
+  local objKeyMove = defaultControls
 
   for s = 1,#objKeyMove do
     if scancodeDown(objKeyMove[s].scancodes) then 
-      dy = dy + nilToZero(objKeyMove[s].dy)
-      dx = dx + nilToZero(objKeyMove[s].dx)
+      dy = dy + nilToZero(objKeyMove[s].dy) * obj.speed
+      dx = dx + nilToZero(objKeyMove[s].dx) * obj.speed
     end
   end
 
