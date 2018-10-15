@@ -1,5 +1,7 @@
 local move = {}
 
+move.updateMe = true
+
 function defaultControls(speed)
   return {
     [1] = {

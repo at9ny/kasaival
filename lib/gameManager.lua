@@ -15,6 +15,7 @@ end
 
 function gameManager:draw(state)
   assetsManager.draw(state.stage.objs)
+  pluginsManager.draw(state.stage)
 end
 
 return gameManager

@@ -3,7 +3,7 @@ local Game = {}
 Game.dimension = 2.5 
 Game.objs = {
   [1] = { 
-    name = 'player',
+    name = 'Player',
     imageName = 'flame',
     images = {},
     frames = 173,
@@ -11,9 +11,16 @@ Game.objs = {
     transform = love.math.newTransform( 200, 200, 0, 1, 1, 0, 0, 0, 0),
     width = 128,
     height = 256,
-    pluginsToInstall = {'move'},
-    pluginsInstalled = {},
+    plugins = {'move'},
     speed = 2,
+  },
+  [2] = {
+    name = 'Ground',
+    x =  '0',
+    y = '0',
+    width = '800',
+    height = "256",
+    plugins = {'grass'},
   }
 }
 
