@@ -30,8 +30,6 @@ function scancodeDown(options)
   for i, option in ipairs(options) do
     if love.keyboard.isScancodeDown(option) then 
       return true
-    else
-      return false 
     end
   end
 end
