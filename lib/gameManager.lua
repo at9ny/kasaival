@@ -3,19 +3,19 @@ local gameManager = {}
 local assetsManager = require('lib/assetsManager')
 local pluginsManager = require('lib/pluginsManager')
 
-function gameManager:init(state) 
-  assetsManager.load(state)
+function gameManager:load(state) 
   pluginsManager.load(state.stage)
+  assetsManager.load(state)
 end
 
 function gameManager:update(dt, state)
-  assetsManager.update()
   pluginsManager.update(state.stage)
+  assetsManager.update()
 end
 
 function gameManager:draw(state)
-  assetsManager.draw(state.stage.objs)
   pluginsManager.draw(state.stage)
+  assetsManager.draw(state.stage.objs)
 end
 
 return gameManager

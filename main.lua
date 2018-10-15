@@ -7,7 +7,7 @@ state.stage = {}
 
 function love.load(arg)
   state.stage = require('stages/' .. state.currentStage)
-  gameManager:init(state)
+  gameManager:load(state)
   state.stage:load()
 end
 
