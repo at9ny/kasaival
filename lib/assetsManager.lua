@@ -72,16 +72,12 @@ function getTransform(obj)
 
   t[1] = getRND(obj.rx, obj.x, 0)
   t[2] = getRND(obj.ry, obj.y, 0)
-  
+  t[4] = nilToZero(t[4])
   t[4] = getRNDR(obj.rwidth, obj.width, obj.sx, 1)
   t[5] = getRNDR(obj.rheight, obj.height, obj.sy, 1)
 
-  for i = 1, 9 do
-    if i == 4 or i == 5 then
-      t[i] = nilToOne(t[i])
-    else
-      t[i] = nilToZero(t[i])
-    end
+  for i = 6,9  do
+    t[i] = nilToZero(t[i])
   end
   
   return love.math.newTransform(t[1], t[2], t[3], t[4], t[5], t[6], t[7], t[8], t[9])
