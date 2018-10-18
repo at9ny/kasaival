@@ -8,17 +8,13 @@ function resizable.update(stage, state)
 
 
   local aspectRatio = w / h
-  
-  if pw ~= w or ph ~= h then flag = true end
+  for i, obj in ipairs(stage.objs) do
+    obj.rwidth = (obj.width / state.width) * w
+    obj.rheight = (obj.height / state.height) * h
 
-  if flag then  
-    for i, obj in ipairs(stage.objs) do
-      obj.rwidth = (obj.width / state.width) * w
-      obj.rheight = (obj.height / state.height) * h
-
-      obj.rx = (obj.x / state.width) * w
-      obj.ry = (obj.y / state.height) * h
-    end
+    obj.rx = (obj.x / state.width) * w
+    obj.ry = (obj.y / state.height) * h
+      
   end
   pw, ph = w, h
  end

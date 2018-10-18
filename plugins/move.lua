@@ -52,8 +52,6 @@ function move.update(obj, stage)
   obj.x = dx + obj.x
   obj.y = dy + obj.y
 
-  obj.sx = sf
-  obj.sy = sf
 end
 
 return move
