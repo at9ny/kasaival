@@ -49,8 +49,11 @@ function move.update(obj, stage)
     end
   end
 
-  t:scale(1, 1)
-  t:translate(dx, dy)
+  obj.x = dx + obj.x
+  obj.y = dy + obj.y
+
+  obj.sx = sf
+  obj.sy = sf
 end
 
 return move

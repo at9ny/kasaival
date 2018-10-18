@@ -9,7 +9,7 @@ function gameManager:load(state)
 end
 
 function gameManager:update(dt, state)
-  pluginsManager.update(state.stage)
+  pluginsManager.update(state.stage, state)
   assetsManager.update()
 end
 

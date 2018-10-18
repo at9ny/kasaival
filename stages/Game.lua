@@ -2,7 +2,6 @@ local Game = {}
 
 Game.dimension = 2.5 
 Game.objs = {
-
   [1] = {
     name = 'Ground',
     x =  '0',
@@ -17,13 +16,16 @@ Game.objs = {
     images = {},
     frames = 173,
     frameSpeed = 0.3,
-    transform = love.math.newTransform( 200, 200, 0, 1, 1, 0, 0, 0, 0),
+    x = 200,
+    y = 200,
     width = 128,
     height = 256,
     plugins = {'move'},
     speed = 2,
   },
 }
+
+Game.plugins = {'resizable'}
 
 function Game:load()
 end

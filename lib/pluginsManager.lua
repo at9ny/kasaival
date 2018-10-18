@@ -9,26 +9,31 @@ function loadPlugins(obj)
   end
 end
 
-function pluginsManager.load(stage)
+function pluginsManager.load(stage, state)
+  if stage.plugins ~= nil then
+    loadPlugins(stage, state)
+  end
   local objs = stage.objs
   for a = 1, #objs do
     local obj = objs[a]
-
     if obj.plugins ~= nil then   
       loadPlugins(obj)
     end
   end
 end
 
-function updatePlugins(obj, stage)
-    for p = 1, #obj.plugins do
-      if type(obj.plugin[p].update) == 'function' then
-        obj.plugin[p].update(obj, stage)
+function updatePlugins(one, two)
+    for p = 1, #one.plugins do
+      if type(one.plugin[p].update) == 'function' then
+        one.plugin[p].update(one, two)
       end
     end
 end
 
-function pluginsManager.update(stage)
+function pluginsManager.update(stage, state)
+  if stage.plugins ~= nil then
+    updatePlugins(stage, state)
+  end
   local objs = stage.objs
   for a = 1, #objs do
     local obj = objs[a]

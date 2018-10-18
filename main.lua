@@ -4,11 +4,17 @@ local state = {}
 state.assetsPath = 'assets/'
 state.currentStage = 'Game'
 state.stage = {}
+state.width = 800
+state.height = 600
+
 
 function love.load(arg)
   state.stage = require('stages/' .. state.currentStage)
   gameManager:load(state)
   state.stage:load()
+
+
+
 end
 
 function love.update(dt)
