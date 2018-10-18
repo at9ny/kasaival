@@ -38,11 +38,13 @@ function nilToOne(val)
   else return 1 end
 end
 
-
-
 function getTransform(obj)
   local t = { obj.rx, obj.ry, obj.angle, obj.sx, obj.sy, obj.ox, obj.oy, obj.kx, obj.ky }
-  
+
+  t[4] = obj.rwidth / obj.width
+  t[5] = obj.rheight / obj.height
+
+
   for i = 1, 9 do
     if i == 4 or i == 5 then
       t[i] = nilToOne(t[i])
@@ -50,14 +52,7 @@ function getTransform(obj)
       t[i] = nilToZero(t[i])
     end
   end
-
-  local newTransform = love.math.newTransform(t[1], t[2], t[3], t[4], t[5], t[6], t[7], t[8], t[9])
-  if obj.transform ~= nil then
-   -- newTransform = obj.transform:apply(newTransform)
-  end
-
-
-  return newTransform
+  return love.math.newTransform(t[1], t[2], t[3], t[4], t[5], t[6], t[7], t[8], t[9])
 end
 
 function drawImages(obj)

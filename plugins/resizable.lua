@@ -13,15 +13,11 @@ function resizable.update(stage, state)
 
   if flag then  
     for i, obj in ipairs(stage.objs) do
-      local x = (obj.x / state.width) * w
-      local y = (obj.y / state.height) * h
+      obj.rwidth = (obj.width / state.width) * w
+      obj.rheight = (obj.height / state.height) * h
 
-      if obj.width ~= nil then
-        obj.rx = x
-      end
-      if obj.height ~= nil then
-        obj.ry = y
-      end
+      obj.rx = (obj.x / state.width) * w
+      obj.ry = (obj.y / state.height) * h
     end
   end
   pw, ph = w, h
